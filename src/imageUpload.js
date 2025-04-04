@@ -26,7 +26,7 @@ const ImageUpload = () => {
 		const formData = new FormData();
 		formData.append('image', image);
 		try {
-			const response = yield axios.post('/api/photo', formData, {
+			const response = yield axios.post('/api/photos/upload', formData, {
 				headers: {
 					'Content-Type': 'multipart/form-data',
 				},
