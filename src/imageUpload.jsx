@@ -35,11 +35,13 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 // src/components/ImageUpload.tsx
 import { useState } from "react";
 import axios from "axios";
+import './ImageUpload.css';
 
 const ImageUpload = () => {
   const [image, setImage] = useState(null);
   const [result, setResult] = useState("");
   const [uploadedImageUrl, setUploadedImageUrl] = useState(null);
+  const [selectedPrompt, setSelectedPrompt] = useState('prompt1');
 
   const handleImageUpload = (event) => {
     if (event.target.files) {
@@ -48,85 +50,107 @@ const ImageUpload = () => {
       setUploadedImageUrl(null);
     }
   };
-  const handleSubmit = async (event) =>
-    __awaiter(void 0, void 0, void 0, function* () {
-      event.preventDefault();
-      if (!image) return;
-      const formData = new FormData();
-      formData.append("image", image);
-      formData.append("promptType", "prompt1");
 
-      try {
-        const response = yield axios.post(
-          "http://localhost:3001/api/photos/upload",
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!image) return;
 
-        console.log('Server Response:', response.data);
-        const { photo } = response.data;
+    const formData = new FormData();
+    formData.append("image", image);
+    formData.append("promptType", selectedPrompt);
 
-        // Use the photo ID to construct the URL
-        const imageUrl = `http://localhost:3001/api/photos/${photo._id}/image`;
-        setUploadedImageUrl(imageUrl);
-        setResult(photo.aiResponse);
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/api/photos/upload",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
-      } catch (error) {
-        console.error("Error analyzing image:", error);
-      }
-    });
-	
-  return _jsxs("div", {
-    children: [
-      _jsx("h1", { children: "Upload an Image" }),
-      _jsxs("form", {
-        onSubmit: handleSubmit,
-        children: [
-          _jsx("input", {
-            type: "file",
-            accept: "image/*",
-            onChange: handleImageUpload,
-          }),
-          _jsx("button", { type: "submit", children: "Analyze Image" }),
-        ],
-      }),
+      console.log('Server Response:', response.data);
+      const { photo } = response.data;
+
+      const imageUrl = `http://localhost:3001/api/photos/${photo._id}/image`;
+      setUploadedImageUrl(imageUrl);
+      setResult(photo.aiResponse);
+
+    } catch (error) {
+      console.error("Error analyzing image:", error);
+    }
+  };
+
+  return (
+    <div className="image-upload-container">
+      <h1 className="image-upload-title">Upload an Image</h1>
       
-      uploadedImageUrl && _jsxs("div", {
-        className: "results-container",
-        children: [
-          _jsxs("div", {
-            className: "image-container",
-            children: [
-              _jsx("h2", { children: "Uploaded Image:" }),
-              _jsx("img", {
-                src: uploadedImageUrl,
-                alt: "Uploaded",
-                style: {
-                  maxWidth: "100%",
-                  maxHeight: "400px",
-                  objectFit: "contain"
-                }
-              })
-            ]
-          }),
-          result && _jsxs("div", {
-            className: "analysis-container",
-            children: [
-              _jsx("h2", { children: "Analysis:" }),
-              _jsx("p", { 
-                className: "analysis-text",
-                children: result 
-              })
-            ]
-          })
-        ]
-      })
-    ]
-  });
+      <form className="upload-form" onSubmit={handleSubmit}>
+        <div className="file-input-container">
+          <input
+            type="file"
+            id="file-input"
+            className="file-input"
+            accept="image/*"
+            onChange={handleImageUpload}
+          />
+          <label htmlFor="file-input" className="file-input-label">
+            Choose Image
+          </label>
+          {image && <span className="file-name">{image.name}</span>}
+        </div>
+
+        <div className="prompt-buttons">
+          <button
+            type="button"
+            className={`prompt-button ${selectedPrompt === 'prompt1' ? 'selected' : ''}`}
+            onClick={() => setSelectedPrompt('prompt1')}
+          >
+            Basic Description
+          </button>
+          <button
+            type="button"
+            className={`prompt-button ${selectedPrompt === 'prompt2' ? 'selected' : ''}`}
+            onClick={() => setSelectedPrompt('prompt2')}
+          >
+            Humorous Description
+          </button>
+          <button
+            type="button"
+            className={`prompt-button ${selectedPrompt === 'prompt3' ? 'selected' : ''}`}
+            onClick={() => setSelectedPrompt('prompt3')}
+          >
+            Shakespearean Description
+          </button>
+        </div>
+
+        <button type="submit" className="analyze-button">
+          Analyze Image
+        </button>
+      </form>
+
+      {uploadedImageUrl && (
+        <div className="results-container">
+          <div className="image-container">
+            <h2>Uploaded Image</h2>
+            <img
+              src={uploadedImageUrl}
+              alt="Uploaded"
+              className="uploaded-image"
+            />
+          </div>
+          
+          {result && (
+            <div className="analysis-container">
+              <h2>Analysis</h2>
+              <p className="analysis-text">{result}</p>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default ImageUpload;

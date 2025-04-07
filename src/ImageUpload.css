@@ -1,0 +1,151 @@
+.image-upload-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.image-upload-title {
+  color: #ffffff;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.file-input-container {
+  position: relative;
+  display: inline-block;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-input-label {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: #3a86ff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.file-input-label:hover {
+  background-color: #2667d6;
+}
+
+.file-name {
+  margin-left: 1rem;
+  color: #b3b3b3;
+}
+
+.prompt-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.prompt-button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #2d2d2d;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.prompt-button.selected {
+  background-color: #3a86ff;
+  color: white;
+}
+
+.prompt-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.analyze-button {
+  padding: 1rem 2rem;
+  background-color: #3a86ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.analyze-button:hover {
+  background-color: #2667d6;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.results-container {
+  margin-top: 2rem;
+  padding: 2rem;
+  background-color: #2d2d2d;
+  border-radius: 8px;
+}
+
+.image-container {
+  margin-bottom: 2rem;
+}
+
+.image-container h2 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.uploaded-image {
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.analysis-container {
+  background-color: #1a1a1a;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.analysis-container h2 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.analysis-text {
+  color: #e0e0e0;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 600px) {
+  .image-upload-container {
+    padding: 1rem;
+  }
+  
+  .prompt-buttons {
+    flex-direction: column;
+  }
+  
+  .prompt-button {
+    width: 100%;
+  }
+} 
