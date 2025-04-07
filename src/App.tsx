@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import ImageUpload from './ImageUpload.js';
+import ImageUpload from './imageUpload.jsx';
 import './App.css'
 import './file.tsx'
 
