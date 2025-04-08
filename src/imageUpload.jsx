@@ -42,6 +42,7 @@ const ImageUpload = () => {
   const [result, setResult] = useState("");
   const [uploadedImageUrl, setUploadedImageUrl] = useState(null);
   const [selectedPrompt, setSelectedPrompt] = useState('prompt1');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleImageUpload = (event) => {
     if (event.target.files) {
@@ -55,6 +56,7 @@ const ImageUpload = () => {
     event.preventDefault();
     if (!image) return;
 
+    setIsLoading(true);
     const formData = new FormData();
     formData.append("image", image);
     formData.append("promptType", selectedPrompt);
@@ -76,9 +78,10 @@ const ImageUpload = () => {
       const imageUrl = `http://localhost:3001/api/photos/${photo._id}/image`;
       setUploadedImageUrl(imageUrl);
       setResult(photo.aiResponse);
-
     } catch (error) {
       console.error("Error analyzing image:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -129,6 +132,15 @@ const ImageUpload = () => {
           Analyze Image
         </button>
       </form>
+
+      {isLoading && (
+        <div className="loading-overlay">
+          <div className="loading-container">
+            <div className="loading-text">Analyzing your image...</div>
+            <div className="loading-bar"></div>
+          </div>
+        </div>
+      )}
 
       {uploadedImageUrl && (
         <div className="results-container">
