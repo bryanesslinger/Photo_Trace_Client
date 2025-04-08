@@ -1,16 +1,8 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import "tailwindcss";
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+#root {
+  width: 100%;
+  height: 100%;
 }
 
 a {
@@ -24,12 +16,15 @@ a:hover {
 
 body {
   margin: 0;
+  font-family: 'sans-serif'; /* or any font you like */
+  background: linear-gradient(to bottom right, #1f2937, #374151, #1f2937); /* Same gradient as your app */
+  color: white;
+  height: 100vh;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
