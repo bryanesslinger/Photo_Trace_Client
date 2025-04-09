@@ -3,11 +3,29 @@ import './App.css';
 import './file.tsx';
 
 function App() {
+  const handleLogin = () => {
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+    window.location.href = `${apiUrl}/auth/google`;
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white flex flex-col items-center justify-center px-4 py-10 font-sans relative overflow-hidden">
       
       {/* Subtle Gradient Background */}
       <div className="absolute inset-0 z-0 bg-gradient-to-br from-gray-800 via-gray-700 to-black opacity-60"></div>
+      
+      {/* Login Button */}
+      <button 
+        onClick={handleLogin}
+        className="absolute top-4 right-4 flex items-center justify-center gap-2 bg-white text-gray-700 font-medium py-2 px-4 rounded border border-gray-300 hover:bg-gray-50 z-20"
+      >
+        <img 
+          src="https://www.google.com/favicon.ico" 
+          alt="Google" 
+          className="w-5 h-5"
+        />
+        Sign in with Google
+      </button>
       
       {/* Hero Section */}
       <header className="w-full max-w-4xl text-center mb-16 px-4 py-8 relative z-10">
