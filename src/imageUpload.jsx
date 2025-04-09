@@ -56,6 +56,8 @@ const ImageUpload = () => {
     event.preventDefault();
     if (!image) return;
 
+    const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3001";
+
     setIsLoading(true);
     const formData = new FormData();
     formData.append("image", image);
@@ -63,7 +65,7 @@ const ImageUpload = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/photos/upload",
+        `${apiUrl}/api/photos/upload`,
         formData,
         {
           headers: {
@@ -75,7 +77,7 @@ const ImageUpload = () => {
       console.log('Server Response:', response.data);
       const { photo } = response.data;
 
-      const imageUrl = `http://localhost:3001/api/photos/${photo._id}/image`;
+      const imageUrl = `${apiUrl}/api/photos/${photo._id}/image`;
       setUploadedImageUrl(imageUrl);
       setResult(photo.aiResponse);
     } catch (error) {
