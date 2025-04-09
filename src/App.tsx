@@ -4,10 +4,7 @@ import './file.tsx';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white flex flex-col items-center justify-center px-4 py-10 font-sans relative overflow-hidden">
-      
-      {/* Subtle Gradient Background */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-gray-800 via-gray-700 to-black opacity-60"></div>
+    <div className="text-white flex flex-col items-center justify-center px-4 py-10 font-sans relative overflow-hidden ">      
       
       {/* Hero Section */}
       <header className="w-full max-w-4xl text-center mb-16 px-4 py-8 relative z-10">
@@ -21,7 +18,7 @@ function App() {
 
       {/* Upload Section */}
       <div className="w-full max-w-4xl bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl shadow-lg p-10 relative z-10">
-        <main>
+        <main className="h-full">
           <ImageUpload />
         </main>
 

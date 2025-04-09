@@ -1,54 +1,52 @@
-# React + TypeScript + Vite
+Sure! Here’s a simple README.md for the PhotoTrace frontend client:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+⸻
 
-Currently, two official plugins are available:
+📸 PhotoTrace — Frontend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+PhotoTrace is a simple MERN stack application that uses the Google Gemini API to analyze photos and provide intelligent feedback.
+This repo contains the client-side (frontend) code of the app.
 
-## Expanding the ESLint configuration
+🚀 Features
+  •	Upload photos via a user-friendly interface
+  •	Send images to the backend for analysis
+  •	Display AI-generated insights using Google Gemini
+  •	Clean, modern UI built with React
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+🛠️ Tech Stack
+  •	React (Frontend Framework)
+  •	TypeScript
+  •	Tailwind CSS (Styling)
+  •	Axios (API Requests)
+  •	Vite (Build Tool)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+📦 Installation
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+# Clone the repo
+git clone https://github.com/your-username/photo-trace-frontend.git
+cd photo-trace-frontend
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+# Install dependencies
+npm install
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+# Start the dev server
+npm run dev
+
+Make sure the backend server is running and accessible at the expected API endpoint.
+
+📁 Project Structure
+
+src/
+├── components/      # Reusable UI components
+├── pages/           # App pages/routes
+├── api/             # Axios config and API calls
+├── hooks/           # Custom hooks
+├── assets/          # Static assets
+└── App.tsx          # App entry point
+
+🔗 Related Repos
+  •	PhotoTrace Backend
+
+📄 License
+
+MIT License
