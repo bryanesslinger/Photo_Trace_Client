@@ -1,4 +1,4 @@
-import ImageUpload from './imageUpload.jsx';
+import ImageUpload from './imageUpload';
 import './App.css';
 import './file.tsx';
 

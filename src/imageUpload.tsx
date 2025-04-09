@@ -1,50 +1,15 @@
-var __awaiter =
-  (this && this.__awaiter) ||
-  function (thisArg, _arguments, P, generator) {
-    function adopt(value) {
-      return value instanceof P
-        ? value
-        : new P(function (resolve) {
-            resolve(value);
-          });
-    }
-    return new (P || (P = Promise))(function (resolve, reject) {
-      function fulfilled(value) {
-        try {
-          step(generator.next(value));
-        } catch (e) {
-          reject(e);
-        }
-      }
-      function rejected(value) {
-        try {
-          step(generator["throw"](value));
-        } catch (e) {
-          reject(e);
-        }
-      }
-      function step(result) {
-        result.done
-          ? resolve(result.value)
-          : adopt(result.value).then(fulfilled, rejected);
-      }
-      step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-  };
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-// src/components/ImageUpload.tsx
-import { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import axios from "axios";
-import './ImageUpload.css';
+import "./ImageUpload.css";
 
 const ImageUpload = () => {
-  const [image, setImage] = useState(null);
-  const [result, setResult] = useState("");
-  const [uploadedImageUrl, setUploadedImageUrl] = useState(null);
-  const [selectedPrompt, setSelectedPrompt] = useState('prompt1');
-  const [isLoading, setIsLoading] = useState(false);
+  const [image, setImage] = useState<File | null>(null);
+  const [result, setResult] = useState<string>("");
+  const [uploadedImageUrl, setUploadedImageUrl] = useState<string | null>(null);
+  const [selectedPrompt, setSelectedPrompt] = useState<string>("prompt1");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const handleImageUpload = (event) => {
+  const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       setImage(event.target.files[0]);
       setResult("");
@@ -52,7 +17,7 @@ const ImageUpload = () => {
     }
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!image) return;
 
@@ -64,17 +29,13 @@ const ImageUpload = () => {
     formData.append("promptType", selectedPrompt);
 
     try {
-      const response = await axios.post(
-        `${apiUrl}/api/photos/upload`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await axios.post(`${apiUrl}/api/photos/upload`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
-      console.log('Server Response:', response.data);
+      console.log("Server Response:", response.data);
       const { photo } = response.data;
 
       const imageUrl = `${apiUrl}/api/photos/${photo._id}/image`;
@@ -90,7 +51,7 @@ const ImageUpload = () => {
   return (
     <div className="image-upload-container">
       <h1 className="image-upload-title">Upload an Image</h1>
-      
+
       <form className="upload-form" onSubmit={handleSubmit}>
         <div className="file-input-container">
           <input
@@ -109,22 +70,22 @@ const ImageUpload = () => {
         <div className="prompt-buttons">
           <button
             type="button"
-            className={`prompt-button ${selectedPrompt === 'prompt1' ? 'selected' : ''}`}
-            onClick={() => setSelectedPrompt('prompt1')}
+            className={`prompt-button ${selectedPrompt === "prompt1" ? "selected" : ""}`}
+            onClick={() => setSelectedPrompt("prompt1")}
           >
             Basic Description
           </button>
           <button
             type="button"
-            className={`prompt-button ${selectedPrompt === 'prompt2' ? 'selected' : ''}`}
-            onClick={() => setSelectedPrompt('prompt2')}
+            className={`prompt-button ${selectedPrompt === "prompt2" ? "selected" : ""}`}
+            onClick={() => setSelectedPrompt("prompt2")}
           >
             Humorous Description
           </button>
           <button
             type="button"
-            className={`prompt-button ${selectedPrompt === 'prompt3' ? 'selected' : ''}`}
-            onClick={() => setSelectedPrompt('prompt3')}
+            className={`prompt-button ${selectedPrompt === "prompt3" ? "selected" : ""}`}
+            onClick={() => setSelectedPrompt("prompt3")}
           >
             Shakespearean Description
           </button>
@@ -148,13 +109,9 @@ const ImageUpload = () => {
         <div className="results-container">
           <div className="image-container">
             <h2>Uploaded Image</h2>
-            <img
-              src={uploadedImageUrl}
-              alt="Uploaded"
-              className="uploaded-image"
-            />
+            <img src={uploadedImageUrl} alt="Uploaded" className="uploaded-image" />
           </div>
-          
+
           {result && (
             <div className="analysis-container">
               <h2>Analysis</h2>
