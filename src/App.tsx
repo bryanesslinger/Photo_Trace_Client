@@ -1,4 +1,4 @@
-import ImageUpload from './imageUpload.jsx';
+import ImageUpload from './imageUpload';
 import './App.css';
 import './file.tsx';
 
@@ -16,9 +16,6 @@ function App() {
         </h1>
         <p className="text-lg text-gray-300 mt-4 opacity-80">
           Upload and analyze images with the power of AI.
-        </p>
-        <p className="text-sm text-gray-400 mt-2 mb-6 opacity-70">
-          Smart, clean, and effortless—transform your photos with style.
         </p>
       </header>
 
