@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import ImageUpload from './imageUpload';
 import './App.css';
 import './file.tsx';
@@ -8,9 +9,9 @@ function App() {
   console.log('API URL:', apiUrl);
   console.log('Full auth URL:', `${apiUrl}/auth/google`);
 
-  const handleLogin = () => {
+  const handleLogin = useCallback(() => {
     window.location.assign(`${apiUrl}/auth/google`);
-  };
+  }, [apiUrl]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white flex flex-col items-center justify-center px-4 py-10 font-sans relative overflow-hidden">
