@@ -21,7 +21,16 @@ const ImageUpload = () => {
     event.preventDefault();
     if (!image) return;
 
-    const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3001";
+    // Get API URL from environment variable
+    const apiUrl = import.meta.env.VITE_API_URL;
+    console.log('Current API URL:', apiUrl);
+    console.log('Environment:', import.meta.env.MODE);
+    
+    if (!apiUrl) {
+      console.error("API URL is not configured. Please check your environment variables.");
+      setResult("Server connection error. Please try again later.");
+      return;
+    }
 
     setIsLoading(true);
     const formData = new FormData();
@@ -29,10 +38,13 @@ const ImageUpload = () => {
     formData.append("promptType", selectedPrompt);
 
     try {
+      console.log('Attempting to connect to:', `${apiUrl}/api/photos/upload`);
       const response = await axios.post(`${apiUrl}/api/photos/upload`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
+        withCredentials: true,
+        timeout: 10000 // 10 second timeout
       });
 
       console.log("Server Response:", response.data);
@@ -41,8 +53,15 @@ const ImageUpload = () => {
       const imageUrl = `${apiUrl}/api/photos/${photo._id}/image`;
       setUploadedImageUrl(imageUrl);
       setResult(photo.aiResponse);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error analyzing image:", error);
+      console.error("Error details:", {
+        message: error.message,
+        code: error.code,
+        response: error.response?.data,
+        status: error.response?.status
+      });
+      setResult("Failed to analyze image. Please try again later.");
     } finally {
       setIsLoading(false);
     }
