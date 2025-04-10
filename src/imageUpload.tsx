@@ -21,12 +21,7 @@ const ImageUpload = () => {
     event.preventDefault();
     if (!image) return;
 
-    // Use different URLs based on environment
-    const apiUrl = window.location.hostname === 'localhost' 
-      ? 'http://localhost:3001'
-      : 'https://photo-trace.onrender.com';
-
-    console.log('Using API URL:', apiUrl);
+    const apiUrl = 'https://photo-trace.onrender.com';
     
     setIsLoading(true);
     const formData = new FormData();
@@ -34,16 +29,13 @@ const ImageUpload = () => {
     formData.append("promptType", selectedPrompt);
 
     try {
-      console.log('Attempting to connect to:', `${apiUrl}/api/photos/upload`);
       const response = await axios.post(`${apiUrl}/api/photos/upload`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
 
-      console.log("Server Response:", response.data);
       const { photo } = response.data;
-
       const imageUrl = `${apiUrl}/api/photos/${photo._id}/image`;
       setUploadedImageUrl(imageUrl);
       setResult(photo.aiResponse);
