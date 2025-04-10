@@ -4,6 +4,9 @@ import './file.tsx';
 
 function App() {
   const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+  console.log('Environment:', import.meta.env.MODE);
+  console.log('API URL:', apiUrl);
+  console.log('Full auth URL:', `${apiUrl}/auth/google`);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white flex flex-col items-center justify-center px-4 py-10 font-sans relative overflow-hidden">
