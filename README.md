@@ -1,40 +1,36 @@
-Sure! Here’s a simple README.md for the PhotoTrace frontend client:
-
-⸻
-
-📸 PhotoTrace — Frontend
+# 📸 PhotoTrace — Frontend
 
 PhotoTrace is a simple MERN stack application that uses the Google Gemini API to analyze photos and provide intelligent feedback.
 This repo contains the client-side (frontend) code of the app.
 
-🚀 Features
+## 🚀 Features
   •	Upload photos via a user-friendly interface
   •	Send images to the backend for analysis
   •	Display AI-generated insights using Google Gemini
   •	Clean, modern UI built with React
 
-🛠️ Tech Stack
+## 🛠️ Tech Stack
   •	React (Frontend Framework)
   •	TypeScript
   •	Tailwind CSS (Styling)
   •	Axios (API Requests)
   •	Vite (Build Tool)
 
-📦 Installation
+## 📦 Installation
 
-# Clone the repo
-git clone https://github.com/your-username/photo-trace-frontend.git
-cd photo-trace-frontend
+### Clone the repo
+`git clone https://github.com/your-username/photo-trace-frontend.git`
+`cd photo-trace-frontend`
 
-# Install dependencies
-npm install
+### Install dependencies
+`npm install`
 
-# Start the dev server
-npm run dev
+### Start the dev server
+`npm run dev`
 
 Make sure the backend server is running and accessible at the expected API endpoint.
 
-📁 Project Structure
+## 📁 Project Structure
 
 src/
 ├── components/      # Reusable UI components
@@ -44,9 +40,9 @@ src/
 ├── assets/          # Static assets
 └── App.tsx          # App entry point
 
-🔗 Related Repos
+### 🔗 Related Repos
   •	PhotoTrace Backend
 
-📄 License
+### 📄 License
 
-MIT License
+  •	MIT License
