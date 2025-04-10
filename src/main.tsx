@@ -6,6 +6,6 @@ import "./index.css";
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App class="bg-gradient-to-br from-gray-900 via-gray-800 to-black" />
+    <App className="bg-gradient-to-br from-gray-900 via-gray-800 to-black" />
   </StrictMode>,
 )

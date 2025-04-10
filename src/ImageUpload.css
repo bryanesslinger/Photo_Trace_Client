@@ -12,6 +12,8 @@
   margin-bottom: 2rem;
   font-size: 2.5rem;
   font-weight: 600;
+  text-align: center;
+  width: 100%;
 }
 
 /* Loading bar styles */
@@ -81,7 +83,9 @@
 
 .file-input-container {
   position: relative;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 
 .file-input {
@@ -96,6 +100,7 @@
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-weight: 600;
 }
 
 .file-input-label:hover {
@@ -109,20 +114,20 @@
 
 .prompt-buttons {
   display: flex;
+  flex-direction: column;
   gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 1rem 0;
+  margin-bottom: 1.5rem;
 }
 
 .prompt-button {
   padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 6px;
-  background-color: #2d2d2d;
+  background-color: transparent;
   color: #ffffff;
+  border: 1px solid #3a86ff;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-align: center;
 }
 
 .prompt-button.selected {
@@ -131,8 +136,7 @@
 }
 
 .prompt-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  background-color: rgba(58, 134, 255, 0.1);
 }
 
 .analyze-button {

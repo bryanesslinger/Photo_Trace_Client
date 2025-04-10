@@ -1,16 +1,21 @@
 import ImageUpload from './imageUpload';
 import './App.css';
-import './file.tsx';
 
-function App() {
+interface AppProps {
+  className?: string;
+}
+
+function App({ className }: AppProps) {
   return (
-    <div className="text-white flex flex-col items-center justify-center px-4 py-10 font-sans relative overflow-hidden ">      
+    <div className={`text-white flex flex-col items-center justify-center px-4 py-10 font-sans relative overflow-hidden ${className}`}>      
       
       {/* Hero Section */}
-      <header className="w-full max-w-4xl text-center mb-16 px-4 py-8 relative z-10">
-        <h1 className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 drop-shadow-lg transition duration-300 ease-out">
-          PhotoTrace
-        </h1>
+      <header className="w-full max-w-4xl text-center mb-4 px-4 py-8 relative z-10">
+        <img 
+          src="/photo-trace.png" 
+          alt="PhotoTrace Logo" 
+          className="w-48 h-auto mx-auto mb-4"
+        />
         <p className="text-lg text-gray-300 mt-4 opacity-80">
           Upload and analyze images with the power of AI.
         </p>

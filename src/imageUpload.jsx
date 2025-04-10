@@ -110,21 +110,21 @@ const ImageUpload = () => {
             className={`prompt-button ${selectedPrompt === 'prompt1' ? 'selected' : ''}`}
             onClick={() => setSelectedPrompt('prompt1')}
           >
-            Geolocate image
+            Trace the Place
           </button>
           <button
             type="button"
             className={`prompt-button ${selectedPrompt === 'prompt2' ? 'selected' : ''}`}
             onClick={() => setSelectedPrompt('prompt2')}
           >
-            Guess photo date
+            Trace the Time
           </button>
           <button
             type="button"
             className={`prompt-button ${selectedPrompt === 'prompt3' ? 'selected' : ''}`}
             onClick={() => setSelectedPrompt('prompt3')}
           >
-            Analyze image
+            Humor Me
           </button>
         </div>
 
