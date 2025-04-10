@@ -5,7 +5,7 @@ import './file.tsx';
 function App() {
   const handleLogin = () => {
     const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
-    window.location.href = `${apiUrl}/auth/google`;
+    window.open(`${apiUrl}/auth/google`, '_self');
   };
 
   return (
