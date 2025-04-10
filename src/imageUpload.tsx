@@ -21,13 +21,12 @@ const ImageUpload = () => {
     event.preventDefault();
     if (!image) return;
 
-    // Use production URL in production, fallback to localhost in development
-    const apiUrl = import.meta.env.PROD 
-      ? 'https://photo-trace.onrender.com'  // Production server URL
-      : 'http://localhost:3001';
+    // Use different URLs based on environment
+    const apiUrl = window.location.hostname === 'localhost' 
+      ? 'http://localhost:3001'
+      : 'https://photo-trace.onrender.com';
 
-    console.log('Current API URL:', apiUrl);
-    console.log('Environment:', import.meta.env.MODE);
+    console.log('Using API URL:', apiUrl);
     
     setIsLoading(true);
     const formData = new FormData();
