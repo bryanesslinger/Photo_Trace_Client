@@ -21,16 +21,8 @@ const ImageUpload = () => {
     event.preventDefault();
     if (!image) return;
 
-    // Log all environment variables for debugging
-    console.log('Environment variables:', {
-      VITE_API_URL: import.meta.env.VITE_API_URL,
-      MODE: import.meta.env.MODE,
-      PROD: import.meta.env.PROD,
-      DEV: import.meta.env.DEV
-    });
-
-    const apiUrl = import.meta.env.VITE_API_URL;
-    console.log('Using API URL:', apiUrl);
+    const apiUrl = 'https://photo-trace.onrender.com';
+    console.log('Making request to:', apiUrl);
     
     setIsLoading(true);
     const formData = new FormData();
@@ -38,19 +30,24 @@ const ImageUpload = () => {
     formData.append("promptType", selectedPrompt);
 
     try {
-      console.log('Attempting POST to:', `${apiUrl}/api/photos/upload`);
       const response = await axios.post(`${apiUrl}/api/photos/upload`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
+        timeout: 10000, // 10 second timeout
       });
 
       const { photo } = response.data;
       const imageUrl = `${apiUrl}/api/photos/${photo._id}/image`;
       setUploadedImageUrl(imageUrl);
       setResult(photo.aiResponse);
-    } catch (error) {
-      console.error("Error analyzing image:", error);
+    } catch (error: any) {
+      console.error("Error details:", {
+        message: error.message,
+        code: error.code,
+        response: error.response?.data,
+        status: error.response?.status
+      });
       setResult("Failed to analyze image. Please try again later.");
     } finally {
       setIsLoading(false);
