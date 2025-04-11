@@ -21,6 +21,14 @@ const ImageUpload = () => {
     event.preventDefault();
     if (!image) return;
 
+    // Log all environment variables for debugging
+    console.log('Environment variables:', {
+      VITE_API_URL: import.meta.env.VITE_API_URL,
+      MODE: import.meta.env.MODE,
+      PROD: import.meta.env.PROD,
+      DEV: import.meta.env.DEV
+    });
+
     const apiUrl = import.meta.env.VITE_API_URL;
     console.log('Using API URL:', apiUrl);
     
@@ -30,6 +38,7 @@ const ImageUpload = () => {
     formData.append("promptType", selectedPrompt);
 
     try {
+      console.log('Attempting POST to:', `${apiUrl}/api/photos/upload`);
       const response = await axios.post(`${apiUrl}/api/photos/upload`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
