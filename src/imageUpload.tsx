@@ -21,7 +21,8 @@ const ImageUpload = () => {
     event.preventDefault();
     if (!image) return;
 
-    const apiUrl = 'https://photo-trace.onrender.com';
+    const apiUrl = import.meta.env.VITE_API_URL;
+    console.log('Using API URL:', apiUrl);
     
     setIsLoading(true);
     const formData = new FormData();
