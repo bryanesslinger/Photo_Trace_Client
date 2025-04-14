@@ -45,9 +45,8 @@ src/
 └── App.tsx          # App entry point
 
 ### 🔗 Related Repos
-  •	PhotoTrace Backend
 
-  🔗 [PhotoTrace Backend](https://photo-trace-client.onrender.com/)
+  🔗 [PhotoTrace Backend](https://github.com/Gurprasad34/Photo_Trace)
 
 ### 📄 License
 
