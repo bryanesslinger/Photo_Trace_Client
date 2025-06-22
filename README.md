@@ -9,6 +9,10 @@ This repo contains the client-side (frontend) code of the app.
   •	Display AI-generated insights using Google Gemini
   •	Clean, modern UI built with React
 
+  ## 📌 Live Demo
+
+🔗 [PhotoTrace](https://photo-trace-client.onrender.com/)
+
 ## 🛠️ Tech Stack
   •	React (Frontend Framework)
   •	TypeScript
@@ -41,7 +45,8 @@ src/
 └── App.tsx          # App entry point
 
 ### 🔗 Related Repos
-  •	PhotoTrace Backend
+
+  🔗 [PhotoTrace Backend](https://github.com/Gurprasad34/Photo_Trace)
 
 ### 📄 License
 
